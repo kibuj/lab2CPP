@@ -120,3 +120,14 @@ class ShapeFactory:
         except ValueError:
             return None
         return None
+
+def process_shapes_from_csv(filename):
+    with open(filename, newline='', encoding='utf-8') as csvfile:
+        reader = csv.reader(csvfile)
+        for row in reader:
+            shape = ShapeFactory.create_shape(row)
+            if shape:
+                print(shape)
+
+
+process_shapes_from_csv('CSVfile.csv')
