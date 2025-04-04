@@ -30,7 +30,7 @@ def triangle_area(a, b, c):
 def triangle_perimeter(a, b, c):
     return float(a) + float(b) + float(c)
 
-def process_shapes_from_csv(filename):
+def main(filename):
     with open(filename, newline='', encoding='utf-8') as csvfile:
         reader = csv.reader(csvfile)
         for row in reader:
@@ -61,6 +61,4 @@ def process_shapes_from_csv(filename):
             print("-" * 30)
 
 
-
-
-process_shapes_from_csv('CSVfile.csv')
+main('CSVfile.csv')
