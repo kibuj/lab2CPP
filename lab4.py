@@ -23,4 +23,17 @@ class Shape(ABC):
                 + "-" * 30)
 
 
+class Rectangle(Shape):
+    def __init__(self, length: float, width: float):
+        self.length = length
+        self.width = width
+
+    def area(self):
+        return self.length * self.width
+
+    def perimeter(self):
+        return 2 * (self.length + self.width)
+
+    def get_type(self):
+        return "Квадрат" if self.length == self.width else "Прямокутник"
 
