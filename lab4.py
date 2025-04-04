@@ -16,10 +16,15 @@ class Shape(ABC):
     def get_type(self):
         pass
 
+    @abstractmethod
+    def volume(self):
+        pass
+
     def __str__(self):
         return (f"{self.get_type()}:\n"
                 f"  Площа: {self.area():.2f}\n"
                 f"  Периметр: {self.perimeter():.2f}\n"
+                f"  Об'єм: {self.volume():.2f}\n"
                 + "-" * 30)
 
 
@@ -36,6 +41,9 @@ class Rectangle(Shape):
 
     def get_type(self):
         return "Квадрат" if self.length == self.width else "Прямокутник"
+
+    def volume(self):
+        return 0
 
 
 class Triangle(Shape):
@@ -58,7 +66,8 @@ class Triangle(Shape):
             return "Прямокутний трикутник"
         else:
             return "Звичайний трикутник"
-
+    def volume(self):
+        return 0
 
 class Cuboid(Shape):
     def __init__(self, length: float, width: float, height: float):
