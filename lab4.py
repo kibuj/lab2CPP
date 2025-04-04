@@ -94,3 +94,29 @@ class Sphere(Shape):
 
     def volume(self):
         return (4 / 3) * math.pi * self.radius ** 3
+
+
+class ShapeFactory:
+    @staticmethod
+    def create_shape(data):
+        shape_type = data[0].lower()
+        try:
+            if shape_type == "прямокутник":
+                length, width = map(float, data[1:3])
+                if length > 0 and width > 0:
+                    return Rectangle(length, width)
+            elif shape_type == "трикутник":
+                a, b, c = map(float, data[1:4])
+                if a > 0 and b > 0 and c > 0 and (a + b > c) and (a + c > b) and (b + c > a):
+                    return Triangle(a, b, c)
+            elif shape_type == "паралелепіпед":
+                length, width, height = map(float, data[1:4])
+                if length > 0 and width > 0 and height > 0:
+                    return Cuboid(length, width, height)
+            elif shape_type == "сфера":
+                radius = float(data[1])
+                if radius > 0:
+                    return Sphere(radius)
+        except ValueError:
+            return None
+        return None
